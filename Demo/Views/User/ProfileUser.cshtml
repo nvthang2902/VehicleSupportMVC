@@ -1,0 +1,111 @@
+﻿@model Demo.Models.TaiKhoan
+
+@{
+    Layout = "~/Views/Shared/_LayoutTest.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb p-0">
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("WelcomeCus","HomeCustomer")">
+                <span class="fa fa-home"></span>
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("ProfileUser","User")">Your Information</a>
+        </li>
+
+    </ol>
+</nav>
+
+<div class="checkout__form">
+    @using (Html.BeginForm("ProfileUser","User"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12 col-md-10">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.HoTen)<span style="color:red;">*</span>
+                            @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", @placeholder = "Họ Tên", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.HoTen)
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.NgaySinh)<span style="color:red;">*</span>
+                            @*<input type="text" name="name" class="form-control" value="@DateTime.Parse(Html.DisplayFor(Model => Model.NgaySinh).ToString()).ToShortDateString()" />*@
+                            @Html.TextBoxFor(m => m.NgaySinh)
+                            @Html.ValidationMessageFor(m => m.NgaySinh)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.SoDienThoai)<span style="color:red;">*</span>
+                            @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control", @placeholder = "Số điện thoại", @type = "number" })
+                            @Html.ValidationMessageFor(m => m.SoDienThoai)
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.Email)<span style="color:red;">*</span>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.TenTK)<span style="color:red;">*</span>
+                            @Html.TextBoxFor(m => m.TenTK, new { @class = "form-control", @placeholder = "TenTK", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.TenTK)
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            @Html.LabelFor(m => m.MatKhau)<span style="color:red;">*</span>
+
+                            <input type="password" name="MatKhau" value="@Model.MatKhau" id="id_password"><i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+
+                            @Html.ValidationMessageFor(m => m.MatKhau)
+
+                        </div>
+                    </div>
+                </div>
+                <div class="checkout__input">
+                    @Html.LabelFor(m => m.DiaChi)<span style="color:red;">*</span>
+                    @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                    @Html.ValidationMessageFor(m => m.DiaChi)
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+    </script>

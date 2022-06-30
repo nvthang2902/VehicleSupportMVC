@@ -1,0 +1,84 @@
+﻿@model Demo.Models.DichVu
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@section header{
+    Chi Tiết Sản Phẩm
+}
+<style>
+    input[type=text] {
+        width: 300px;
+        border-radius: 4px;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        cursor: not-allowed;
+        margin-top: 5px;
+        width: 300px;
+        background-color: #eee;
+        opacity: 1.2;
+        color: #000;
+    }
+
+    dl {
+        background-color: #bab9b9;
+    }
+</style>
+<div class="mf">
+    <dl class="dl-horizontal" style=" padding:10px 0 10px 10px;">
+        <dt>
+            @Html.LabelFor(model => model.IdDV)
+        </dt>
+
+        <dd>
+            <input placeholder="@Html.DisplayFor(model => model.IdDV)" disabled="" class="form-control">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDichVu)
+        </dt>
+
+        <dd>
+            <input placeholder="@Html.DisplayFor(model => model.TenDichVu)" disabled="" class="form-control">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaDV)
+        </dt>
+
+        <dd>
+            <input placeholder="@Html.DisplayFor(model => model.GiaDV)" disabled="" class="form-control">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            <input placeholder="@Html.DisplayFor(model => model.MoTa)" disabled="" class="form-control">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNCC)
+        </dt>
+        <dd>
+            <input placeholder="@Html.DisplayFor(model => model.IdNCC)" disabled="" class="form-control">
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageDV)
+        </dt>
+        <dd>
+            <img style="width:200px;height:200px; margin:10px; " src="~/Upload/images/@Model.ImageDV" />
+
+        </dd>
+
+    </dl>
+</div>
+<div style="padding-top:0px;">
+    <a href="@Url.Action("Edit",new { id = Model.IdDV })" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+    <a href="@Url.Action("Index", "DichVu")" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+

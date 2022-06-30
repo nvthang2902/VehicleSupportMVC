@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Demo.Models.CoSoDichVu>
+@{
+    Layout = "~/Views/Shared/_LayoutTest.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb p-0">
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("WelcomeHome","HomeCustomer")">
+                <span class="fa fa-home"></span>
+            </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("CoSoDichVuCusTest","HomeCustomer")">Cơ Sở DV</a>
+        </li>
+
+    </ol>
+</nav>
+
+<section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <a href="/HomeCustomer/DichVuCusTest/@item.IdNCC">
+                                <img style="width:295px;height:200px; " src="~/Upload/images/@item.ImageNCC" />
+                            </a>
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> @Html.DisplayFor(model => item.NgayDangKi)</li>
+                                <li>@Html.DisplayFor(model => item.DiaChi) </li>
+
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#"> @Html.DisplayFor(model => item.TenNCC)</a></h5>
+                            <p>Dịch vụ Cứu hộ xe máy 24/24</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

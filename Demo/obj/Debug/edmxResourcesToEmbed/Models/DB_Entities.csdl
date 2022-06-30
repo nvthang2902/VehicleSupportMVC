@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CuuHoXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTietSuDungDV">
+    <Key>
+      <PropertyRef Name="IdSDDV" />
+      <PropertyRef Name="IdDV" />
+    </Key>
+    <Property Name="IdSDDV" Type="Int32" Nullable="false" />
+    <Property Name="IdDV" Type="Int32" Nullable="false" />
+    <Property Name="GiaDV" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoLuongDV" Type="Int32" />
+    <NavigationProperty Name="SuDungDichVu" Relationship="Self.FK__ChiTietSu__IdSDD__32E0915F" FromRole="ChiTietSuDungDV" ToRole="SuDungDichVu" />
+    <NavigationProperty Name="DichVu" Relationship="Self.FK__ChiTietSuD__IdDV__33D4B598" FromRole="ChiTietSuDungDV" ToRole="DichVu" />
+  </EntityType>
+  <EntityType Name="CoSoDichVu">
+    <Key>
+      <PropertyRef Name="IdNCC" />
+    </Key>
+    <Property Name="IdNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDangKi" Type="DateTime" Precision="0" />
+    <Property Name="ImageNCC" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__CoSoDichV__TenTK__286302EC" FromRole="CoSoDichVu" ToRole="TaiKhoan" />
+    <NavigationProperty Name="DichVus" Relationship="Self.FK__DichVu__IdNCC__2C3393D0" FromRole="CoSoDichVu" ToRole="DichVu" />
+    <NavigationProperty Name="GiayPhepCSDVs" Relationship="Self.FK__GiayPhepC__IdNCC__398D8EEE" FromRole="CoSoDichVu" ToRole="GiayPhepCSDV" />
+    <NavigationProperty Name="LePhis" Relationship="Self.FK__LePhi__IdNCC__36B12243" FromRole="CoSoDichVu" ToRole="LePhi" />
+    <NavigationProperty Name="SuDungDichVus" Relationship="Self.FK__SuDungDic__IdNCC__300424B4" FromRole="CoSoDichVu" ToRole="SuDungDichVu" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmMK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="IdDV" />
+    </Key>
+    <Property Name="IdDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDichVu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GiaDV" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IdNCC" Type="Int32" />
+    <Property Name="ImageDV" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="ChiTietSuDungDVs" Relationship="Self.FK__ChiTietSuD__IdDV__33D4B598" FromRole="DichVu" ToRole="ChiTietSuDungDV" />
+    <NavigationProperty Name="CoSoDichVu" Relationship="Self.FK__DichVu__IdNCC__2C3393D0" FromRole="DichVu" ToRole="CoSoDichVu" />
+    <NavigationProperty Name="HinhAnhDVs" Relationship="Self.FK__HinhAnhDV__IdDV__3C69FB99" FromRole="DichVu" ToRole="HinhAnhDV" />
+  </EntityType>
+  <EntityType Name="GiayPhepCSDV">
+    <Key>
+      <PropertyRef Name="IdAnh" />
+    </Key>
+    <Property Name="IdAnh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdNCC" Type="Int32" />
+    <NavigationProperty Name="CoSoDichVu" Relationship="Self.FK__GiayPhepC__IdNCC__398D8EEE" FromRole="GiayPhepCSDV" ToRole="CoSoDichVu" />
+  </EntityType>
+  <EntityType Name="HinhAnhDV">
+    <Key>
+      <PropertyRef Name="IdAnh" />
+    </Key>
+    <Property Name="IdAnh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdDV" Type="Int32" />
+    <NavigationProperty Name="DichVu" Relationship="Self.FK__HinhAnhDV__IdDV__3C69FB99" FromRole="HinhAnhDV" ToRole="DichVu" />
+  </EntityType>
+  <EntityType Name="LePhi">
+    <Key>
+      <PropertyRef Name="IdLP" />
+    </Key>
+    <Property Name="IdLP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdNCC" Type="Int32" />
+    <Property Name="ThoiGianNop" Type="DateTime" Precision="0" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="CoSoDichVu" Relationship="Self.FK__LePhi__IdNCC__36B12243" FromRole="LePhi" ToRole="CoSoDichVu" />
+  </EntityType>
+  <EntityType Name="SuDungDichVu">
+    <Key>
+      <PropertyRef Name="IdSDDV" />
+    </Key>
+    <Property Name="IdSDDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ThoiGianDat" Type="DateTime" Precision="0" />
+    <Property Name="IdNCC" Type="Int32" />
+    <Property Name="DiaChiDat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MoTa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChiTietSuDungDVs" Relationship="Self.FK__ChiTietSu__IdSDD__32E0915F" FromRole="SuDungDichVu" ToRole="ChiTietSuDungDV" />
+    <NavigationProperty Name="CoSoDichVu" Relationship="Self.FK__SuDungDic__IdNCC__300424B4" FromRole="SuDungDichVu" ToRole="CoSoDichVu" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__SuDungDic__TenTK__2F10007B" FromRole="SuDungDichVu" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="TenTK" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="XacNhanMK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="CoSoDichVus" Relationship="Self.FK__CoSoDichV__TenTK__286302EC" FromRole="TaiKhoan" ToRole="CoSoDichVu" />
+    <NavigationProperty Name="SuDungDichVus" Relationship="Self.FK__SuDungDic__TenTK__2F10007B" FromRole="TaiKhoan" ToRole="SuDungDichVu" />
+  </EntityType>
+  <Association Name="FK__ChiTietSu__IdSDD__32E0915F">
+    <End Role="SuDungDichVu" Type="Self.SuDungDichVu" Multiplicity="1" />
+    <End Role="ChiTietSuDungDV" Type="Self.ChiTietSuDungDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuDungDichVu">
+        <PropertyRef Name="IdSDDV" />
+      </Principal>
+      <Dependent Role="ChiTietSuDungDV">
+        <PropertyRef Name="IdSDDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSuD__IdDV__33D4B598">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+    <End Role="ChiTietSuDungDV" Type="Self.ChiTietSuDungDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="IdDV" />
+      </Principal>
+      <Dependent Role="ChiTietSuDungDV">
+        <PropertyRef Name="IdDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoSoDichV__TenTK__286302EC">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="CoSoDichVu" Type="Self.CoSoDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="TenTK" />
+      </Principal>
+      <Dependent Role="CoSoDichVu">
+        <PropertyRef Name="TenTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DichVu__IdNCC__2C3393D0">
+    <End Role="CoSoDichVu" Type="Self.CoSoDichVu" Multiplicity="0..1" />
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoSoDichVu">
+        <PropertyRef Name="IdNCC" />
+      </Principal>
+      <Dependent Role="DichVu">
+        <PropertyRef Name="IdNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GiayPhepC__IdNCC__398D8EEE">
+    <End Role="CoSoDichVu" Type="Self.CoSoDichVu" Multiplicity="0..1" />
+    <End Role="GiayPhepCSDV" Type="Self.GiayPhepCSDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoSoDichVu">
+        <PropertyRef Name="IdNCC" />
+      </Principal>
+      <Dependent Role="GiayPhepCSDV">
+        <PropertyRef Name="IdNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LePhi__IdNCC__36B12243">
+    <End Role="CoSoDichVu" Type="Self.CoSoDichVu" Multiplicity="0..1" />
+    <End Role="LePhi" Type="Self.LePhi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoSoDichVu">
+        <PropertyRef Name="IdNCC" />
+      </Principal>
+      <Dependent Role="LePhi">
+        <PropertyRef Name="IdNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuDungDic__IdNCC__300424B4">
+    <End Role="CoSoDichVu" Type="Self.CoSoDichVu" Multiplicity="0..1" />
+    <End Role="SuDungDichVu" Type="Self.SuDungDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoSoDichVu">
+        <PropertyRef Name="IdNCC" />
+      </Principal>
+      <Dependent Role="SuDungDichVu">
+        <PropertyRef Name="IdNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HinhAnhDV__IdDV__3C69FB99">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="0..1" />
+    <End Role="HinhAnhDV" Type="Self.HinhAnhDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="IdDV" />
+      </Principal>
+      <Dependent Role="HinhAnhDV">
+        <PropertyRef Name="IdDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuDungDic__TenTK__2F10007B">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="SuDungDichVu" Type="Self.SuDungDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="TenTK" />
+      </Principal>
+      <Dependent Role="SuDungDichVu">
+        <PropertyRef Name="TenTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CuuHoXe_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietSuDungDVs" EntityType="Self.ChiTietSuDungDV" />
+    <EntitySet Name="CoSoDichVus" EntityType="Self.CoSoDichVu" />
+    <EntitySet Name="DichVus" EntityType="Self.DichVu" />
+    <EntitySet Name="GiayPhepCSDVs" EntityType="Self.GiayPhepCSDV" />
+    <EntitySet Name="HinhAnhDVs" EntityType="Self.HinhAnhDV" />
+    <EntitySet Name="LePhis" EntityType="Self.LePhi" />
+    <EntitySet Name="SuDungDichVus" EntityType="Self.SuDungDichVu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <AssociationSet Name="FK__ChiTietSu__IdSDD__32E0915F" Association="Self.FK__ChiTietSu__IdSDD__32E0915F">
+      <End Role="SuDungDichVu" EntitySet="SuDungDichVus" />
+      <End Role="ChiTietSuDungDV" EntitySet="ChiTietSuDungDVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSuD__IdDV__33D4B598" Association="Self.FK__ChiTietSuD__IdDV__33D4B598">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="ChiTietSuDungDV" EntitySet="ChiTietSuDungDVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoSoDichV__TenTK__286302EC" Association="Self.FK__CoSoDichV__TenTK__286302EC">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="CoSoDichVu" EntitySet="CoSoDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DichVu__IdNCC__2C3393D0" Association="Self.FK__DichVu__IdNCC__2C3393D0">
+      <End Role="CoSoDichVu" EntitySet="CoSoDichVus" />
+      <End Role="DichVu" EntitySet="DichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GiayPhepC__IdNCC__398D8EEE" Association="Self.FK__GiayPhepC__IdNCC__398D8EEE">
+      <End Role="CoSoDichVu" EntitySet="CoSoDichVus" />
+      <End Role="GiayPhepCSDV" EntitySet="GiayPhepCSDVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LePhi__IdNCC__36B12243" Association="Self.FK__LePhi__IdNCC__36B12243">
+      <End Role="CoSoDichVu" EntitySet="CoSoDichVus" />
+      <End Role="LePhi" EntitySet="LePhis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuDungDic__IdNCC__300424B4" Association="Self.FK__SuDungDic__IdNCC__300424B4">
+      <End Role="CoSoDichVu" EntitySet="CoSoDichVus" />
+      <End Role="SuDungDichVu" EntitySet="SuDungDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HinhAnhDV__IdDV__3C69FB99" Association="Self.FK__HinhAnhDV__IdDV__3C69FB99">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="HinhAnhDV" EntitySet="HinhAnhDVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuDungDic__TenTK__2F10007B" Association="Self.FK__SuDungDic__TenTK__2F10007B">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="SuDungDichVu" EntitySet="SuDungDichVus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

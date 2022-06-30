@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4268bbfd93cf4571876b9723371f2534" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="CuuHoXeModel.ChiTietSuDungDV" Width="1.5" PointX="4.875" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.CoSoDichVu" Width="1.5" PointX="2.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.DichVu" Width="1.5" PointX="5.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.GiayPhepCSDV" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.HinhAnhDV" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.LePhi" Width="1.5" PointX="5.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.SuDungDichVu" Width="1.5" PointX="2.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuuHoXeModel.TaiKhoan" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="CuuHoXeModel.FK__ChiTietSu__IdSDD__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__ChiTietSuD__IdDV__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__CoSoDichV__TenTK__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__DichVu__IdNCC__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__GiayPhepC__IdNCC__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__LePhi__IdNCC__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__SuDungDic__IdNCC__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__HinhAnhDV__IdDV__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="CuuHoXeModel.FK__SuDungDic__TenTK__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,262 @@
+﻿@model Demo.Models.Cart
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CUUHOXE.COM</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
+</head>
+<body>
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    @{Html.RenderAction("_HeaderLayoutTest", "Login"); }
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Actions</span>
+                        </div>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "Login")" title="Đăng nhập">Sign In</a></li>
+                            <hr>
+                            <li><a href="@Url.Action("ResetPassword","Login")" title="Đổi mật khẩu">Change Password</a></li>
+                            <hr>
+                            <li><a href="@Url.Action("ProfileUser", "User")" title="Cập nhật thông tin ">Update Your Infor</a></li>
+                            <hr>
+                            <li><a href="@Url.Action("CSDV", "HomeCustomer")">Booking Services</a></li>
+                            <hr>
+                            <li><a href="@Url.Action("ContactUs","HomeCustomer")" title="Góp ý - Phản hồi">Feedback</a></li>
+                            <hr>
+                            <li><a href="@Url.Action("Index", "Login")" title="Thoát">Log Out</a></li>
+                            <hr />
+                            <li><a href="@Url.Action("Register", "Login")" title="Đăng kí">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+
+                                <input type="text" placeholder="Tìm kiếm?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+8439 969 0744</h5>
+                                <span>Allways support 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section" style="background-image: url('/Upload/images/proncc0001.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>SERVICES</h2>
+                        <div class="blac breadcrumb__option">
+                            <div class="blac breadcrumb__option">
+                                <a href="@Url.Action("DemoChatBox","HomeCustomer")">HOME</a>
+                                <a href="#">Services</a>
+                                <span>Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-0">
+                            <li class="breadcrumb-item">
+                                <a href="@Url.Action("DemoChatBox","HomeCustomer")">
+                                    <span class="fa fa-home" title="Home"></span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="@Url.Action("CSDV","HomeCustomer")">Service Business</a>
+                            </li>
+                            <li class="breadcrumb-item" aria-current="page"> <a href="@Url.Action("DV","HomeCustomer")">Services</a> </li>
+                            <li class="breadcrumb-item" aria-current="page">Book Repairing Services</li>
+                        </ol>
+                    </nav>
+                    <div class="shoping__cart__table">
+                        @if (Model != null)
+                        {
+
+                            <table>
+                                <thead>
+                                    <tr>
+
+                                        <th class="shoping__product">Service</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Items)
+                                    {
+                                        double? total = Convert.ToDouble(item._shopping_product.GiaDV * item._shopping_quantity);
+                                        <tr>
+                                            <td class="shoping__cart__item">
+                                                <img style="width:150px;height:150px;" src="~/Upload/images/@item._shopping_product.ImageDV" alt="hinhanhDV">
+                                                <h5>@Html.DisplayFor(model => item._shopping_product.TenDichVu)</h5>
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                @Html.DisplayFor(model => item._shopping_product.GiaDV)
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                @using (Html.BeginForm("Update_Quantity_Cart", "DatDichVu"))
+                                                {
+                                                    <input type="hidden" value="@item._shopping_product.IdDV" name="ID_DichVu" />
+                                                    <div class="quantity">
+                                                        <div class="pro-qty">
+                                                            <input type="text" value="@item._shopping_quantity" name="Quantity" />
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <input type="submit" class="primary-btn" value="Update" />
+                                                }
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                @total.Value.ToString("N0") vnd
+                                            </td>
+                                            <td class="shoping__cart__item__close">
+                                                <a href="/DatDichVu/RemoveCart/@item._shopping_product.IdDV" class="btn btn-danger" title="Remove">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a href="@Url.Action("DV","HomeCustomer")" title="Tiếp tục thêm dịch vụ" class="primary-btn">
+                            <i class="fa fa-angle-double-left"></i> CONTINUE BOOKING
+                        </a>
+                       
+                       
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+                        <div class="shoping__discount">
+                            <h5>Booking Info</h5>
+                            @using (Html.BeginForm("CheckOutDichVu", "DatDichVu"))
+                            {
+                                <input type="text" placeholder="Name" name="TenTK" required>
+                                <input type="text" placeholder="Address" name="DiaChiDat" required>
+                                <hr />
+                                <input type="text" placeholder="Description" name="MoTa" required>
+                                <input type="number" placeholder="Phone Number">
+                                <hr />
+                                <input name="CheckOutDichVu" style="color:#fff; background-color:#DD2222" type="submit" value="Booking Services" class="site-btn cart-btn btn-danger">
+                                    
+
+                            }
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <ul>
+                            <li>TOTAL: <span>@Model.Total_Money().ToString("N0") vnd</span></li>
+                            <li>
+                                <a href="@Url.Action("Payment","DatDichVu")" style="color:#fff;background-color:#ffd800" class="site-btn cart-btn btn-danger">
+                                    <span class="icon_loading"></span>
+                                        Pay to MOMO
+                                </a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <!-- Shoping Cart Section End -->
+    <!-- Footer Section Begin -->
+
+    <div class="map">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.7649512094295!2d108.20987591416997!3d16.077682543483476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421847b8d7ec71%3A0x7591c4b0240f6bc2!2zNDggQ2FvIFRo4bqvbmcsIFRoYW5oIELDrG5oLCBI4bqjaSBDaMOidSwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1650861960317!5m2!1svi!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-inside">
+            <i class="icon_pin"></i>
+            <div class="inside-widget">
+                <h4>Da Nang</h4>
+                <ul>
+                    <li>PhoneNumber: +8439 969 0744</li>
+                    <li>Address: 48 Cao Thang, Hai Chau, Da Nang</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
+    <!-- Contact Form Begin -->
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/mixitup.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
+</body>
+</html>

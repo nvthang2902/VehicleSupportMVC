@@ -1,0 +1,134 @@
+﻿@model Demo.Models.DichVu
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <style>
+        input[type=text] {
+            width: 300px;
+            border-radius: 4px;
+        }
+
+        input[type=number] {
+            width: 300px;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 300px;
+            height: 35px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 8px 0 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="mf">
+        @using (Html.BeginForm("Create", "DichVu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" style="background-color:#f3f2f2;padding:10px 0 10px 30px;">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdDV)
+                @Html.HiddenFor(model => model.ImageDV)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenDichVu, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenDichVu, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenDichVu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GiaDV, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*CurrencyInput*@
+                        <input type='number' placeholder='0.00' id="GiaDV" name="GiaDV" class=" CurrencyInput form-control" />
+                        @Html.ValidationMessageFor(model => model.GiaDV, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdNCC, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @{Html.RenderAction("ChooseCategory", "DichVu");}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImageDV, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*<input type="file" id="uploadhinh" name="uploadhinh" accept="image/*" />*@
+                        <img src="@Url.Content(Model.ImageDV)" style="height:200px; width:200px; margin:10px;" alt="@Model.TenDichVu" id="previewImage" />
+                        <input type="file" name="uploadhinh" class="form-control-file" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+                        @*<input type="file" name="ImageUpload" onchange="ShowImagePreview(this, document.getElementById('previewImage')" />*@
+                        @Html.ValidationMessageFor(model => model.ImageDV, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button onclick="submit();" type="submit" value="Create" class="btn btn-info"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div style="padding-top:10px;">
+        <a href="@Url.Action("Index", "DichVu")" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </div>
+</body>
+</html>
+<script>
+
+    $('input.CurrencyInput').on('keyup', function () {
+        var value = $(this).val().replace(/,/g, '');
+        value = parseFloat(value).toLocaleString('en-US', {
+            style: 'decimal',
+            maximumFractionDigits: 2,
+        });
+        $(this).val(value);
+    });
+
+    function submit() {
+        var GiaDV = document.getElementById('GiaDV');
+        GiaDV.value = Number(GiaDV.value.replace(/[^0-9.-]+/g, ""));
+        $("#save").submit();
+    }
+
+
+    function ShowImagePreview(imageUploader, previewImage) {
+        // lấy file nào đó
+        if (imageUploader.files && imageUploader.files[0]) {
+            // đọc file
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // đưa hình vào thuộc tính đường dẫn
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(imageUploader.files[0]);
+        }
+    }
+</script>

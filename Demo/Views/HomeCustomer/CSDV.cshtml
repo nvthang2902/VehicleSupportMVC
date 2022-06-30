@@ -1,0 +1,177 @@
+﻿@model IEnumerable<Demo.Models.CoSoDichVu>
+@{
+    Layout = null;
+    TempData.Keep("TenTK");
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CUUHOXE.COM</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    @{Html.RenderAction("_HeaderLayoutTest", "Login"); }
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Actions</span>
+                        </div>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "Login")" class="category-item__link" title="Đăng nhập">Sign In</a></li>
+                            <li><a href="@Url.Action("ResetPassword","Login")" class="category-item__link" title="Đổi mật khẩu">Change Password</a></li>
+                            <li><a href="@Url.Action("ProfileUser", "User")" class="category-item__link" title="Cập nhật thông tin ">Update Your Infor</a></li>
+                            <li><a href="@Url.Action("CSDV", "HomeCustomer")" class="category-item__link" title="Đặt dịch vụ">Booking Services</a></li>
+                            <li><a href="@Url.Action("ContactUs","HomeCustomer")" class="category-item__link" title="Góp ý - Phản hồi">Feedback</a></li>
+                            <li><a href="@Url.Action("ShowToCart","DatDichVu")" class="category-item__link" title="Chi tiết giỏ hàng">Detail Cart</a></li>
+                            <li><a href="@Url.Action("Register", "Login")" class="category-item__link" title="Đăng kí">Register</a></li>
+                            <li><a href="@Url.Action("Index", "Login")" class="category-item__link" title="Thoát">Log Out</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+
+                                <input type="text" placeholder="Tìm kiếm?">
+                                <button type="submit" class="site-btn">TÌM KIẾM</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+8439 969 0744</h5>
+                                <span>Hỗ trợ 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section" style="background-image: url('/Upload/images/carousel-bg-2.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2 >BUSINESS</h2>
+                        <div class="blac breadcrumb__option">
+                            <div class="blac breadcrumb__option">
+                                <a href="@Url.Action("DemoChatBox","HomeCustomer")">HOME</a>
+                                <span >Services Business</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Contact Section Begin -->
+    <section class="contact">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb p-0">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("DemoChatBox","HomeCustomer")">
+                            <span class="fa fa-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("CSDV","HomeCustomer")">Services Business</a>
+                    </li>
+
+                </ol>
+            </nav>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <a href="/HomeCustomer/DV/@item.IdNCC">
+                                    <img style="width:360px;height:260px; " src="~/Upload/images/@item.ImageNCC" />
+                                </a>
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> @Html.DisplayFor(model => item.NgayDangKi)</li>
+                                    <li>@Html.DisplayFor(model => item.DiaChi) </li>
+
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><a href="#"> @Html.DisplayFor(model => item.TenNCC)</a></h5>
+                                <p>Allways support 24/24</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section End -->
+    <!-- Map Begin -->
+    <div class="map">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.7649512094295!2d108.20987591416997!3d16.077682543483476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421847b8d7ec71%3A0x7591c4b0240f6bc2!2zNDggQ2FvIFRo4bqvbmcsIFRoYW5oIELDrG5oLCBI4bqjaSBDaMOidSwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1650861960317!5m2!1svi!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-inside">
+            <i class="icon_pin"></i>
+            <div class="inside-widget">
+                <h4>Đà Nẵng</h4>
+                <ul>
+                    <li>Điện thoại: +8439 969 0744</li>
+                    <li>Địa chỉ: 48 Cao Thắng, Hải Châu, Đà Nẵng.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
+    <!-- Contact Form Begin -->
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/mixitup.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
+</body>
+</html>

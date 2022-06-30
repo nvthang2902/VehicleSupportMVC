@@ -1,0 +1,112 @@
+﻿@model Demo.Models.DichVu
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Cập nhật Sản Phẩm
+}
+<style>
+    input[type=text] {
+        width: 300px;
+        border-radius: 4px;
+    }
+
+    input[type=number] {
+        width: 300px;
+        border-radius: 4px;
+    }
+
+    select {
+        width: 300px;
+        height: 35px;
+        border-radius: 5px;
+    }
+
+    .form-group {
+        margin: 8px 0 8px 0;
+    }
+</style>
+<div class="mf">
+    @using (Html.BeginForm("Edit", "DichVu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="background-color:#bab9b9;padding:10px 0 10px 30px;">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdDV)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenDichVu, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenDichVu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenDichVu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GiaDV, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GiaDV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GiaDV, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdNCC, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdNCC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdNCC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageDV, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*<img src="~/Upload/images/@Model.ImageDV"  style="height:200px; width:200px; margin:10px;" alt="Alternate Text" id="previewImage" />
+                        <input type="file" name="ImageUpload" onchange="ShowImagePreview(this, document.getElementById('previewImage')" />*@
+                    <img style="width:200px;height:200px; margin:10px; " src="~/Upload/images/@Model.ImageDV" id="previewImage" />
+                    <input type="file" name="uploadhinh" class="form-control-file" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+                    @Html.ValidationMessageFor(model => model.ImageDV, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="Edit" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="padding-top:10px;">
+        <a href="@Url.Action("Index", "DichVu")" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+    </div>
+</div>
+<script>
+    function ShowImagePreview(imageUploader, previewImage) {
+        // lấy file nào đó
+        if (imageUploader.files && imageUploader.files[0]) {
+            // đọc file
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // đưa hình vào thuộc tính đường dẫn
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(imageUploader.files[0]);
+        }
+    }
+</script>

@@ -1,0 +1,259 @@
+﻿
+@{
+    Layout = null;
+    TempData.Keep("TenTK");
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CUUHOXE.COM</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/chatboxx/css/jquery.convform.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/chatboxx/css/style.css">
+    <style>
+        .category-item__link {
+            position: relative;
+            right: 0;
+            transition: right linear 0.1s;
+            text-decoration: none;
+            font-size: 1.4rem;
+            padding: 8px 16px;
+            display: block;
+            color: var(--text-color);
+        }
+
+            .category-item__link:hover {
+                color: #ff6a00;
+                right: -4px;
+            }
+    </style>
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    @{Html.RenderAction("_HeaderLayoutTest", "Login"); }
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Actions</span>
+                        </div>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "Login")" class="category-item__link" title="Đăng nhập">Sign In</a></li>
+                            <li><a href="@Url.Action("ResetPassword","Login")" class="category-item__link" title="Đổi mật khẩu">Change Password</a></li>
+                            <li><a href="@Url.Action("ProfileUser", "User")" class="category-item__link" title="Cập nhật thông tin ">Update Your Infor</a></li>
+                            <li><a href="@Url.Action("CSDV", "HomeCustomer")" class="category-item__link" title="Đặt dịch vụ">Booking Services</a></li>
+                            <li><a href="@Url.Action("ContactUs","HomeCustomer")" class="category-item__link" title="Góp ý - Phản hồi">Feedback</a></li>
+                            <li><a href="@Url.Action("ShowToCart","DatDichVu")" class="category-item__link" title="Chi tiết giỏ hàng">Detail Cart</a></li>
+                            <li><a href="@Url.Action("Register", "Login")" class="category-item__link" title="Đăng kí">Register</a></li>
+                            <li><a href="@Url.Action("Index", "Login")" class="category-item__link" title="Thoát">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <input type="text" placeholder="Search">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+1234567890</h5>
+                                <span>Support 24/7 time</span>
+                                <span>@ViewBag.TenTK</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero__item" style="background-image: url('/Upload/images/proncc0001.jpg');">
+                        @*<img src="~/Upload/images/BANNER-4.jpg" style="height:431px; width:847px;" alt="Alternate Text" />*@
+                        <div class="hero__text">
+                            <span>REPAIRING VEHICLES</span>
+                            <h2 style="color:white;"> <br />100.000 VND</h2>
+                            <p>Description</p>
+                            <a href="#" class="primary-btn">INFO</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <!-- Categories Section Begin -->
+    <!-- Categories Section End -->
+    <!-- Featured Section Begin -->
+    <!-- Featured Section End -->
+    <!-- Banner Begin -->
+    <div style="padding-bottom: 50px;" class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="~/Upload/images/carousel-bg-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="~/Upload/images/carousel-bg-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Banner End -->
+    <div class="chat_icon">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+    </div>
+
+    <div class="chat_box">
+        <div class="my-conv-form-wrapper">
+            <form action="" method="GET" class="hidden">
+
+                <select data-conv-question="Hello! How can I help you" name="category">
+                    <option value="WebDevelopment">Booking Services?</option>
+                    <option value="DigitalMarketing">How much Services you find?</option>
+                </select>
+
+                <div data-conv-fork="category">
+                    <div data-conv-case="WebDevelopment">
+                        <input type="text" name="domainName" data-conv-question="Please, tell me your phone number?">
+                    </div>
+                    <div data-conv-case="DigitalMarketing" data-conv-fork="first-question2">
+                        <input type="text" name="companyName" data-conv-question="Please, enter your phone.">
+                    </div>
+                </div>
+
+                <input type="text" name="name" data-conv-question="Please, Enter your name">
+
+                <input type="text" data-conv-question="Hi {name}, <br> It's a pleasure to meet you." data-no-answer="true">
+
+                <input data-conv-question="Enter your e-mail" type="email" name="email" required placeholder="What's your e-mail?">
+
+                <select data-conv-question="Please Confirm">
+                    <option value="Yes">Confirm</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <!-- Latest Product Section Begin -->
+    <!-- Latest Product Section End -->
+    <!-- Blog Section Begin -->
+    <!-- Blog Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Address: 40 Cao Thang, Hai Chau, Da Nang</li>
+                            <li>Phone: +84 399 690 744</li>
+                            <li>Email: nvthang2902@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Useful Links</h6>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Our Sitemap</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Who We Are</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Innovation</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Join Our Newsletter Now</h6>
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your mail">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script><i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="~/Upload/images/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/mixitup.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
+    <script type="text/javascript" src="~/Content/chatboxx/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/chatboxx/js/jquery.convform.js"></script>
+    <script type="text/javascript" src="~/Content/chatboxx/js/custom.js"></script>
+
+</body>
+</html>

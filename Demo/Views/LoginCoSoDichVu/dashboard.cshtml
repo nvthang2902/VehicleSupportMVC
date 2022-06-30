@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "dashboard";
+    TempData.Keep("TenTK");
+    TempData.Keep("id");
+}
+<div style="width:auto;">
+    @if (@TempData["user"] != null)
+    {
+        <span>Welcome : </span> @TempData["TenTK"] <span> | </span> @Html.ActionLink("Thoát", "Logout", "login")
+    }
+    else
+    {
+        @Html.ActionLink("Register", "Register", "User")
+        <span> | </span>
+        @Html.ActionLink("Log In", "Login", "User")
+    }
+</div>
